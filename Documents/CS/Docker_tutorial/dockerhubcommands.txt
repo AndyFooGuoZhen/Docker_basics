@@ -1,0 +1,8 @@
+To create a new repo
+
+1. login
+    docker login and enter credentials
+
+2. docker tag <imagename>:<imagetag>  <username>/<reponame>
+
+3. docker push <username>/<reponame>
