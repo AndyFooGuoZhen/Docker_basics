@@ -140,7 +140,7 @@ services:
 
 ```
 
-Specifics on volumes : Mapping of host and container volume allows changes to sync between files in host machine and container. EX : if new code is added onto host machine, new code files will be added into container as well
+Specifics on volumes : Mapping of host and container volume allows changes to sync between files in host machine and container. EX : if new code is added onto host machine, new code files will be added into container as well. EX: If volume is specified as /frontend:/frontendContainer and frontendContainer is not set as WORKDIR in Dockerfile, a new directory named frontendContainer will be created in the container.
 
 ### Tips when building CICD pipeline via Jenkins
 Hide console outputs from docker-compose up by doing 
