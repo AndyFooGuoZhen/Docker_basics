@@ -109,8 +109,11 @@ COPY aws_tutorial ./
 3. COPY aws_tutorial/package*.json ./ --> copy everything with the name package.json into /app
 4. aws_tutorial ./ --> copy everything in aws_tutorial folder into /app
 
-# Docker compose
+# Docker compose 
 Docker Compose is a tool that allows you to define and manage multi-container Docker applications. It provides a simple way to define the services, networks, and volumes required for your application in a declarative YAML file.
+
+### Guide for using docker-compose for projects with multiple services
+Link : https://www.honeybadger.io/blog/docker-django-react/
 
 ### Building and running multiple containers from Dockerfile
 ```
@@ -138,9 +141,6 @@ services:
 ```
 
 Specifics on volumes : Mapping of host and container volume allows changes to sync between files in host machine and container. EX : if new code is added onto host machine, new code files will be added into container as well
-
-
-
 
 ### Tips when building CICD pipeline via Jenkins
 Hide console outputs from docker-compose up by doing 
