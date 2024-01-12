@@ -199,4 +199,13 @@ INSERT INTO users (name, email) VALUES
 5. Provide .pem file for EC2 server authentication
 6. Fill out MySQL credentials and test connection
 
+### MySQL persistance
+
+#### Scenario 1 : Stopping the container and starting the container again.
+MySQL database data is persisted
+
+### Scenario 2: Removing the container and building it from image again.
+MySQL database data set to original state.
+
+
 
