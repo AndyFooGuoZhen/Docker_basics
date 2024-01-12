@@ -149,4 +149,49 @@ Hide console outputs from docker-compose up by doing
 docker-compose up -d
 ```
 
+# Docker container with MySQL
+### Sample Dokcerfile hosting mysql DB
+
+```
+# Use an official MySQL 8.0 image as the base image
+FROM mysql:8.0
+
+# Set environment variables for MySQL configuration
+ENV MYSQL_ROOT_PASSWORD=password
+
+
+# Copy the SQL script to initialize the database
+COPY ./init.sql /docker-entrypoint-initdb.d/
+
+# Expose the MySQL port
+EXPOSE 3306
+```
+
+### Sample Init.sql script for mysql
+Used for creating a schema , filling in data for table
+```
+-- Create database
+CREATE DATABASE mydatabase;
+
+-- Use the database
+USE mydatabase;
+
+-- Create table
+CREATE TABLE users (
+  id INT AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- Insert sample data
+INSERT INTO users (name, email) VALUES
+('John Doe', 'john@example.com'),
+('Jane Smith', 'jane@example.com');
+
+```
+
+### Using MySQL Workbench to connect to containerized DB
+After building and running the container created for mysql db, MySQL workbench can be used to connect to the containerized db via tcp/ssh method. In EC2, provide public IP as hostname and ubuntu as ssh username and provide .pem file for EC2 server authentication. Then fill in necessary mysql login credentials and test connection.
+
 
