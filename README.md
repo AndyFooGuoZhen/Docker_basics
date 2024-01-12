@@ -192,6 +192,11 @@ INSERT INTO users (name, email) VALUES
 ```
 
 ### Using MySQL Workbench to connect to containerized DB
-After building and running the container created for mysql db, MySQL workbench can be used to connect to the containerized db via tcp/ssh method. In EC2, provide public IP as hostname and ubuntu as ssh username and provide .pem file for EC2 server authentication. Then fill in necessary mysql login credentials and test connection.
+1. Allow inbound port for EC2 for port 3306
+2. Build dockerfile and run the container with port mapping 3306:3306
+3. In MySQL Workbench, open up new connection with TCP/SSH method
+4. Procide public IP as hostname and ubuntu as ssh username
+5. Provide .pem file for EC2 server authentication
+6. Fill out MySQL credentials and test connection
 
 
