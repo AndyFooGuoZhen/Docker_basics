@@ -1,5 +1,8 @@
 ## Resource : Link: https://www.youtube.com/watch?v=3xDAU5cvi5E&list=PLxAp0ELKVyrnjVDfF3tWhhW7aAtgUsl9N&index=1
 
+# Why use Docker?
+Docker can be used to containerize applications so their dependencies are managed in an isolated environment. Makes migration of code and development of code easier as other developers wouln't need to resolve dependency issues on their local machines.
+
 # Docker commands
 Checking images on our pc 
 ```
