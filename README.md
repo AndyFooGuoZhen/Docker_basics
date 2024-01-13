@@ -205,7 +205,31 @@ INSERT INTO users (name, email) VALUES
 MySQL database data is persisted
 
 ### Scenario 2: Removing the container and building it from image again.
-MySQL database data set to original state.
+MySQL database data set to original state. MySQL Database in container in ephermeral on default.
+
+### Scenario 3 : Removal of container after specifying volume mounts in docker-compose.
+MySQL database data is persisted 
+
+Sample docker-compose.yaml file for persistent db
+
+```
+services:
+  database:
+     build: ./Database
+     ports:
+      - "3306:3306"
+     environment:
+      - MYSQL_ROOT_PASSWORD=password
+     volumes:
+      -  mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+```
+
+In this example, the /var/lib/mysql data in the container is mounted on the host's mysql-data directory which is located in /var/lib/docker/volumes/mysql-data/_data. 
+
+
 
 
 
