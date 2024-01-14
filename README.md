@@ -3,6 +3,42 @@
 # Why use Docker?
 Docker can be used to containerize applications so their dependencies are managed in an isolated environment. Makes migration of code and development of code easier as other developers wouln't need to resolve dependency issues on their local machines.
 
+# Docker networking methods
+
+## Method 1 : Docker bridge Networking
+When a container is created , docker creates a bridge network that allows the containers to communicate with the host machine. Each container is assigned an IP address within the bridge network. On default (docker0) , when containers are created , each container will be able to communicate with other containers on the same network as they are connected via the same veth (virtual ethernet). 
+
+### Issues with bridge networking
+If all containers are connected on the same veth , vulnerability occurs as hackers can target the veth to access other containers.
+
+### Solution 1 : Logically seperate sensitive container's eth0 by creating custom bridge network
+
+Creation of custom bridge network
+```
+docker network create <name of network>
+```
+
+Check networks within docker
+```
+docker network ls
+```
+
+Runnning a container on custom network
+```
+docker run --network=<network name> <image>
+```
+
+To check a container's networking properties
+```
+docker inspect <container name>
+```
+
+Result : Container with default bridge cant communicate (ping) to container with custom bridge network
+
+## Solution 2 : Attach Host network to sensitive container
+Host network mode allows a container to share the network namespace with the host system. This means that the container uses the same IP address, network interfaces, and ports as the host system. It effectively merges the network stack of the container with that of the host.
+
+
 # Docker commands
 Checking images on our pc 
 ```
