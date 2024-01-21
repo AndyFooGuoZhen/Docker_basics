@@ -50,6 +50,11 @@ docker image ls
 Docker build -t <imagename> .
 ```
 
+### Creating docker image with tag
+```
+docker build -t <imagename>:<tagname> .
+```
+
 ### Deleting a docker image
 ```
 docker image rm <image id>
